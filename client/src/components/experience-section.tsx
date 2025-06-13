@@ -81,7 +81,7 @@ export function ExperienceSection() {
       if (experienceSection) {
         const rect = experienceSection.getBoundingClientRect();
         const elementTop = rect.top + window.scrollY;
-        window.scrollTo({ top: elementTop - 80, behavior: 'instant' });
+        window.scrollTo({ top: elementTop - 80, behavior: 'smooth' });
       }
     }, 0);
   };
