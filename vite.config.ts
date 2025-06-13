@@ -6,11 +6,16 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 // https://vitejs.dev/config/
 const isGithubActions = !!process.env.GITHUB_ACTIONS;
 
+// For GitHub Pages, we want to use the repository name as the base path
+// For local development, use '/'
 let base = '/';
+
 if (isGithubActions && process.env.GITHUB_REPOSITORY) {
-  // Remove the repository name from the base URL
   const repo = process.env.GITHUB_REPOSITORY.replace(/^[\w-]+\//, '');
-  base = `/${repo}/`;
+  // Only use the repo name as base if it's not the main GitHub Pages repo
+  if (repo !== 'SirKentut.github.io') {
+    base = `/${repo}/`;
+  }
 }
 
 export default defineConfig({

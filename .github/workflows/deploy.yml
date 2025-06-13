@@ -7,9 +7,14 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,20 +26,24 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+
       - name: Install dependencies
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          cp -r dist/public/. dist/
+
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist'
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
-          target-branch: gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }}
-          clean: true
-          clean-exclude: |
-            .git
-            .github
-            node_modules
+        id: deployment
+        uses: actions/deploy-pages@v4
