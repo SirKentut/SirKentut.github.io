@@ -58,9 +58,18 @@ export function HeroSection() {
     <section id="home" className="min-h-screen flex items-center justify-center pt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="fade-in visible">
-          {/* Professional headshot placeholder */}
-          <div className="w-32 h-32 mx-auto mb-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
-            <div className="w-16 h-16 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+          {/* Profile Image */}
+          <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-4 border-primary">
+            <img 
+              src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTOwy7XU7gVYXjKAjjMXWvLvca36o_uFzgw9QPfMApPvcJ2vipaGxCXW2euINWkpwG1hVsHvGIU"
+              alt="Profile"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = 'https://via.placeholder.com/128';
+                console.error('Error loading profile image, using fallback');
+              }}
+            />
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
