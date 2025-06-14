@@ -61,7 +61,7 @@ export function HeroSection() {
           {/* Profile Image */}
           <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-4 border-primary">
             <img 
-              src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTOwy7XU7gVYXjKAjjMXWvLvca36o_uFzgw9QPfMApPvcJ2vipaGxCXW2euINWkpwG1hVsHvGIU"
+              src="https://lh3.googleusercontent.com/pw/AP1GczO-SgMjbLLixvhUIoD2GpEpKOVPMi6EAUczXbdJDfiKIIKNvTAwYeHmjwzBtnuHNTm-_c9fcGOWq2TUgJ2eR_31PA5_rHPguQ6Yzx5Lt139h5CYGCNPLwOcodhh8d5KXPBTxO8u4TAj3Wy8y4DVbD8=w1036-h1554-s-no?authuser=0"
               alt="Profile"
               className="w-full h-full object-cover"
               onError={(e) => {
